@@ -81,7 +81,7 @@ Some of the most recommended Markdown extensions from the [Visual Studio Marketp
 
 To use metadata, add lines of **key:value** pairs to the top of the Markdown file. Each line of metadata should be followed by 2 spaces. This way, when the document is passed through a regular version of Markdown, the metadata will be properly formatted as plain text with line breaks, rather than joined into a single run-on paragraph.
 
-**🅴:**
+**🅴**
 
 The following example shows some of the available options for metadata.
 
@@ -111,9 +111,15 @@ Keywords:    Comma-separated list of
 
 ## 4.1. Emphasis
 
-**Emphasize text** using 1, 2, or 3 asterisks (`*`) or underscores (`_`).
+**Emphasize text** using 1, 2, or 3 asterisks (`*`) or underscores (`_`), as follows:
 
-**🅴:**
+```md
+*italic*
+**bold**
+***bold and italic***
+```
+
+**🅴**
 
 - This is *italic*.
 - This is **bold**.
@@ -121,11 +127,61 @@ Keywords:    Comma-separated list of
 
 <br>
 
-## 4.2. Strike-through
+## 4.2. Verbatim
 
-**Strike out text** by surrounding it with 2 tilde characters (`~~`) on each side or enclosing it using HTML `<\s>` or `<\del>` tags.
+Type verbatim text inline by surrounding it with 1 backtick character (`` ` ``) on each side, as follows:
 
-**🅴:**
+```md
+`verbatim text`
+```
+
+Any text indented 4 of more spaces becomes verbatim text.
+
+```md
+||||
+    verbatim text
+```
+
+Any text surrounded by 3 backticks (```` ``` ````) or tildes (`~~~`) creates a  **verbatim text environment**.
+
+````
+```
+verbatim text
+environment
+```
+````
+
+The following examples show how verbatim text is rendered.
+
+**🅴**
+
+This is a normal paragraph with `some inline verbatim text`.
+
+**🅴**
+
+    indented text > verbatim
+
+
+**🅴**
+
+```
+verbatim text
+environment
+```
+
+<br>
+
+## 4.3. Strike-through
+
+**Strike out text** by surrounding it with 2 tilde characters (`~~`) on each side or enclosing it using HTML `<\s>` or `<\del>` tags, as follows:
+
+```md
+     ~~Scratch this~~
+  <s>~~Scratch this~~</s>
+<del>~~Scratch this~~</del>
+```
+
+**🅴**
 
 - ~~Scratch this.~~ (Markdown)
 - <s>~~Scratch this.~~</s> (HTML)
@@ -133,36 +189,37 @@ Keywords:    Comma-separated list of
 
 <br>
 
-## 4.3. Superscript and Subscript
+## 4.4. Superscript and Subscript
 
-Only some flavors of Markdown can produce superscripts and subscripts.
+**Superscript text** by surrounding it with 1 tilde character (`~`) on each side and **subscript text** by surrounding it with 1 caret character (`^`) on each side, as follows:
 
-- **Superscript text** by surrounding it with 1 tilde character (`~`) on each side. 
-- **Subscript text** by surrounding it with 1 caret character (`^`) on each side.
+```md
+2^10^   # superscript '10'
+H~2~O   # subscript '2'
+```
 
-**🅴:**
+**🅴**
 
-- H~2~O
-- Speedup~overall_system~
 - 2^10^ = 1024
 - x^a^ • x^b^ = x^a+b^
+- H~2~O
+- Speedup~overall_system~
 
 <br>
   
+## 4.5. Symbols
 
-## 4.4. Symbols
+Markdown supports a great number of [symbols, special characters, fancy text, and Emoji](https://coolsymbol.com/) directly.
 
-A great number of [symbols, special characters, fancy text, and Emoji](https://coolsymbol.com/) are supported directly.
+**🅴**
 
-**🅴:**
-
-█ ░ ✔ | - | – | — | ® | § | ¬ | • | ∘ | · | ° | º | ² | » ♫ 🙂
+░ █ ✔ | - | – | — | ® | § | ¬ | • | ∘ | · | ° | º | ² | » ♫ 🙂
 
 <br>
 
-## 4.5. CriticMarkup
+## 4.6. CriticMarkup
 
-[CriticMarkup](http://criticmarkup.com/users-guide.php) is a way for authors and editors to track changes to documents in plain text by highlighting text insertions, deletions, and substitutions using combinations of distinctive characters. The syntax is supported only by some flavors of Markdown.
+[CriticMarkup](http://criticmarkup.com/users-guide.php) offers authors and editors a way to track changes to documents in plain text by highlighting text insertions, deletions, and substitutions using combinations of distinctive characters. The syntax is supported only by some flavors of Markdown.
 
 There are five types of **Critic marks**:
 
@@ -184,25 +241,37 @@ Critic marks can be represented as follows for use in paragraphs.
 
 <br>
 
-## 4.6. Links
+## 4.7. Links
 
-There are three styles of links in Markdown: **raw**, **inline**, and **reference**.
+There are three types of **links** in Markdown: **raw**, **inline**, and **reference** links.
 
 - **Raw links** contain the URL only.  
-	`http://google.com`
 
-- **Inline links** contain the URL in parentheses, directly after the title/identifier enclosed in brackets.  
-	`[Google Search](http://google.com)`
+	```md
+	http://google.com
+	```
 
-- **Reference links** use a second set of square brackets and an arbitrary identifier instead of a URL.  
-  `[Google Search][1]`  
-	`[Google Search][G]`
+- **Inline links** contain the URL in parentheses, directly after the title/identifier enclosed in brackets.   
+
+	```md
+	[Google Search](http://google.com)
+	```
+
+- **Reference links** use a second set of square brackets to enclose an arbitrary identifier instead of a URL.  
+
+	```md
+	[Google Search][1]
+	[Google Search][G]
+	```
 
 	The ***reference link identifiers*** can be defined anywhere else in the document and they are omitted in the Markdown preview.  
-	`[1]: http://google.com`  
-	`[G]: http://google.com`
 
-**🅴:**
+	```md
+	[1]: http://google.com
+	[G]: http://google.com
+	```
+
+**🅴**
 
 - http://google.com
 - [Google Search](http://google.com) (*inline*)
@@ -214,15 +283,29 @@ There are three styles of links in Markdown: **raw**, **inline**, and **referenc
 
 <br>
 
-## 4.7. Footnotes
+## 4.8. Footnotes
 
-Footnotes are very similar to reference links. The ***footnote link identifier*** is written as `[^identifier]` and is usually defined at the bottom of the text or section. Footnotes are displayed at the end of the document.
+**Footnotes** use square brackets to enclose a caret followed by an arbitrary note identifier, as follows:   
+
+```md
+text[^1]   # Number identifier
+text[^N]   # Name identifier
+```
+
+The ***note identifier*** is usually defined at the bottom of the section and includes the desired *footnote text*. The footnote is displayed at the end of the document.
+
+```md
+[^1]: Numbered footnote text.
+[^N]: Named footnote text.
+```
+
+**🅴**
 
 - This is a *numbered* footnote[^1].
 - This is a *named* footnote[^Name].
 
-[^1]: Numbered footnote definition.
-[^Name]: Named footnote definition.
+[^1]: Numbered footnote text.
+[^Name]: Named footnote text.
 
 <br>
 
@@ -233,31 +316,37 @@ Footnotes are very similar to reference links. The ***footnote link identifier**
 -->
 # 5. Blocks
 
+<br>
+
 ## 5.1. Paragraphs
 
-Paragraphs are separated by blank lines. A single line break does not results in a new paragraph.
+**Paragraphs** are separated by blank lines. A single line break does not results in a new paragraph.
 
 <br>
 
 ## 5.2. Rules
 
-Use `***` or `---` to create a horizontal rule. Horizontal rules can be used to separate paragraphs or sections of documents with a horizontal line.
+**Rules** can be used to separate paragraphs or sections of documents with a horizontal line. Use `***` or `---` in a separate line to create a rule.
 
 <br>
 
 ## 5.3. Lists
 
-Line items can be organized into **ordered and unordered lists**. Indent one or more items to create a **nested list**.
+There are two main types of **lists** in Markdown: **ordered** and **unordered** lists. Lists can also be **single-level** or **multi-level** (*nested*). If one or more items in a list are indented, we have a **nested list**.
 
 **Ordered lists** use line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with `1`.
 
+**🅴**
+
 1. Line 1
 2. Line 2
-1. Line 3
+3. Line 3
 	1. Sub 3.1
 	2. Sub 3.2
 
 **Unordered lists** use asterisks, plus symbols, or hyphens as list markers.
+
+**🅴**
 
 * Item 1
 	* Item 1a
@@ -265,7 +354,7 @@ Line items can be organized into **ordered and unordered lists**. Indent one or 
 + Item 2
 - Item 3
 
-We can also have various combinations of ordered and unordered lists, which can also be nested. Every sublevel must be indented 1 tab (`	`), equivalent to 2 spaces (#1Writer).
+List markers can be combined to obtain a mixture of ordered and unordered lists, which can also be nested. Every sublevel must be indented by a 2-space tab (`	`). This requirement makes VS Code and other applications, such as  1Writer for iOS, display this type of list correctly.
 
 1. Level 1
 2. Level 2
@@ -282,53 +371,33 @@ We can also have various combinations of ordered and unordered lists, which can 
 
 <br>
 
-## 5.4. Definition Lists
+## 5.4. Blockquotes
 
-**Definition:**
+**Blockquotes** are indicated by a leading `'>'` character. They can contain multiple paragraphs, can be nested, and can contain other Markdown formatted elements. They have the following syntax:
 
-: **Term.**  
-	Paragraph.
-	$$x + y$$
+```md
+> This is a blockquote. This
+paragraph has two lines (lazy form).
+>
+> New paragraph.
+>
+> > Nested paragraph.
+> > > ...
+```
 
-<br>
+```md
+> Another blockquote with 
+some Markdown formatted elements.
+>
+> - Item 1
+> - Item 2
+>
+>  `verbatimn text`.
+```
 
-**Definition:**
+Blockquotes are rendered as follows:
 
-: **Term.**  
-	Paragraph 1.
-
-  		Verbatim text.
-
-    Paragraph 2.
-
-<br>
-
-**Definition:**
-
-: Definition
-	with lazy continuation.
-
-	```java
-	System.out.println("Java code");
-	```
-
-<br>
-
-**Apple**
-:	- Pomaceous fruit of plants of the genus Malus in the family Rosaceae.
-:	- An american computer company.
-
-<br>
-
-## 5.5. Blockquotes
-
-**Blockquotes** are indicated by a leading `'>'` character:
-
-- Blockquotes **can contain multiple paragraphs**. Add a `'>'` on the blank lines between the paragraphs.
-- Blockquotes **can be nested**. Add a `'>>'` or, subsequently `'>>>'`, in front of the paragraph you want to nest.
-- Blockquotes **can contain other Markdown formatted elements**.
-
-<br>
+**🅴**
 
 > This is a blockquote. This
 paragraph has two lines (lazy form).
@@ -338,64 +407,29 @@ paragraph has two lines (lazy form).
 > > Nested paragraph.
 > > > ...
 
-<br>
+**🅴**
 
-> **Another blockquote with *some Markdown formatted elements*.**
+> Another blockquote with some Markdown formatted elements.
 >
 > - Item 1
 > - Item 2
 >
->  `verbatimn text`.
+>  `verbatim text`
 
 <br>
 
-## 5.6. Verbatim Text Blocks
+## 5.5. Code Blocks
 
-**A paragraph or block of text indented 2 or more spaces is treated as *verbatim text*:**
+**Code blocks** are verbatim text environments with syntax highlighting for many [supported Languages](https://gitpitch.com/docs/code-features/fenced-blocks/#code-language-hints-quick-reference-table). The language, usually in the form of an abbreviation, must be specified to the right of the first set of backticks, as follows:
 
-**🅴:**
-
-This is a normal paragraph.
-
-	def even(x):
-		return x % 2 == 0
-
-
-**A paragraph or block of text enclosed in 3 backticks (```` ``` ````) or tildes (`~~~`) is treated as *verbatim text*:**
-
-**🅴:**
-
-This is a normal paragraph.
-
-```
+````md
+```py
 def even(x):
-	return x % 2 == 0
+    return x % 2 == 0
 ```
+````
 
-
-**Text enclosed in a pair of backticks in a paragraph is treated as *inline verbatim text*:**
-
-**🅴:**
-
-This is a normal paragraph with `some inline verbatim text`, as stated.
-
-
-**A paragraph or block of text indented 5 or more spaces from the blockquote character `'>'` in a blockquote is treated as verbatim text:**
-
-**🅴:**
-
-This is a normal paragraph.
-
->     def even(x):
->        return x % 2 == 0
-
-<br>
-
-## 5.7. Code Blocks
-
-**A line or block of code enclosed in 3 backticks (```` ``` ````) or tildes (`~~~`) is treated as a fenced code block.** To add *syntax highlighting*, specify a language next to the backticks before the fenced code block. For a comprehensive list of supported languages, see [Fenced Code Blocks :: Markdown Presentations for Developers | GitPitch](https://gitpitch.com/docs/code-features/fenced-blocks/#code-language-hints-quick-reference-table).
-
-This is a normal paragraph.
+**🅴**
 
 ```py
 def even(x):
@@ -404,11 +438,13 @@ def even(x):
 
 <br>
 
-## 5.8. Adding Elements in Lists
+## 5.6. Adding Elements in Lists
 
 Lists can contain blocks and other elements, which must be indented some number of spaces to preserve the continuity of the list. The number of spaces depends upon the type of element that is inserted.
 
 **Paragraphs:**
+
+**🅴**
 
 - First list item.
 - Second list item, then a paragraph.
@@ -421,6 +457,8 @@ Lists can contain blocks and other elements, which must be indented some number 
 
 **Blockquotes:**
 
+**🅴**
+
 - First list item.
 - Second list item, then a blockquote.
 
@@ -432,6 +470,8 @@ Lists can contain blocks and other elements, which must be indented some number 
 
 **Code blocks:**
 
+**🅴**
+
 Code blocks are normally indented 4 spaces. When they’re in a list, indent them 8 spaces.
 
 1.  Some text.
@@ -439,9 +479,9 @@ Code blocks are normally indented 4 spaces. When they’re in a list, indent the
 
 	```html
 	<html>
-		<head>
-			<title>Test</title>
-		</head>
+	  <head>
+	    <title>Test</title>
+	  </head>
 	```
 
 3.  Another line.
@@ -449,6 +489,8 @@ Code blocks are normally indented 4 spaces. When they’re in a list, indent the
 <br>
 
 **Images:**
+
+**🅴**
 
 1.  Some text.
 2.  More text, then an image.
@@ -459,7 +501,9 @@ Code blocks are normally indented 4 spaces. When they’re in a list, indent the
 
 <br>
 
-The following example illustrates how different elements can be inserted into the same list, while preserving its continuity.
+Different elements can be inserted into the same list, while preserving its continuity.
+
+**🅴**
 
 1. **First item** (no block)
 
@@ -484,9 +528,11 @@ The following example illustrates how different elements can be inserted into th
 
 <br>
 
-## 5.9. Ending Lists
+## 5.7. Ending Lists
 
-In the following example, the code block is treated as a block of item two and not as a block following the list.
+**🅴**
+
+Here, the java code block is treated as a block of item two and not as a block for the entire list.
 
 - item one
 - item two
@@ -508,6 +554,82 @@ a <- 5
 
 <br>
 
+## 5.8. Definition Lists
+
+Some Markdown processors, such as Pandoc's Markdown, support **definition lists**. These are lists of terms followed by their corresponding definitions.
+
+A term may have multiple definitions, and each definition may consist of one or more block elements (paragraph, code block, list, etc.), each indented a number of spaces according to the type. Combinations of these are also allowed.
+
+The following examples illustrate the syntax:
+
+**🅴**
+
+```md
+**Term:**
+: First definition of the term.
+: Second definition of the term.
+```
+
+**🅴**
+
+```md
+**Definition:**
+
+: **Term.**
+	Description 1.
+
+	$$ equation $$
+
+  		Verbatim text.
+
+	Description 2.
+
+	```py
+	code block
+	```
+```
+
+The following examples show how these lists are rendered:
+
+**🅴**
+
+**Apple**
+:	- Pomaceous fruit of plants of the genus Malus in the family Rosaceae.
+:	- An american computer company.
+
+**🅴**
+
+**Definition:**
+
+: **Term.**  
+	Description.
+
+	$$ x + y $$
+
+**🅴**
+
+**Definition:**
+
+: **Term.**  
+	Description 1.
+
+  		Verbatim text.
+
+ 	 Description 2.
+
+**🅴**
+
+**Definition:**
+
+: Description
+	with lazy continuation.
+
+	```java
+	System.out.println("Java code");
+	```
+
+<br>
+
 <!--
 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
 |@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ [1] @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@|
@@ -515,7 +637,7 @@ a <- 5
 -->
 # 6. Tables
 
-The syntax for tables looks like ASCII art. Some of the requirements are:
+**Tables** are created using pipes (`|`), dashes (`-`), and semicolons (`:`) following some requirements, including:
 
 - Columns are separated by pipe (`|`) characters.
 - The colons (`:`) below the table headers indicate the column's alignment.
@@ -527,6 +649,8 @@ The syntax for tables looks like ASCII art. Some of the requirements are:
 
 The following examples illustrate the syntax for tables.
 
+**🅴**
+
 [**Table caption**]
 | Default | Left | Center | Right |
 | ------- | :--- | :----: | ----: |
@@ -534,8 +658,7 @@ The following examples illustrate the syntax for tables.
 | 123     | 123  |  123   |   123 |
 | 1       | 1    |        |     1 |
 
-<br>
-<br>
+**🅴**
 
 |              |          Grouping           ||
 | First Header | Second Header | Third Header |
