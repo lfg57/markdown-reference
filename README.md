@@ -1,2 +1,2 @@
 # markdown-reference
-Comprehensive Markdown Reference, including Extended Syntax
+A Comprehensive Markdown Reference with Extended Syntax
